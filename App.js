@@ -1896,21 +1896,6 @@ const Body = () => {
       <div className="card-wrapper">
         <Rescard  resData = {resList[1]}/>
         {/* <Rescard resData = {resList[0]}/> */}
-        {/* <Rescard />
-        <Rescard />
-        <Rescard />
-        <Rescard />
-        <Rescard />
-        <Rescard />
-        <Rescard />
-        <Rescard />
-        <Rescard />
-        <Rescard />
-        <Rescard />
-        <Rescard />
-        <Rescard />
-        <Rescard />
-        <Rescard />  */}
       </div>
     </div>
   );
