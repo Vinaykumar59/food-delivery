@@ -1895,7 +1895,7 @@ const Body = () => {
       <div className="search">Search</div>
       <div className="card-wrapper">
         <Rescard  resData = {resList[1]}/>
-        {/* <Rescard resData = {resList[0]}/> */}
+        <Rescard resData = {resList[0]}/>
       </div>
     </div>
   );
