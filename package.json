@@ -1,7 +1,7 @@
 {
-  "name": "food-delivery-app",
+  "name": "food-deliveryt",
   "version": "1.0.0",
-  "description": "",
+  "description": "food-delivery",
   "scripts": {
     "test": "jest",
     "start": "parcel index.html",
@@ -9,16 +9,21 @@
   },
   "repository": {
     "type": "git",
-    "url": "food-delivery-app"
+    "url": "(https://github.com/VinayKumar59/food-delivery.git)"
   },
+  "keywords": [],
   "author": "Vinay",
   "license": "ISC",
   "devDependencies": {
-    "parcel": "^2.12.0",
+    "open-cli": "^8.0.0",
     "process": "^0.11.10"
   },
   "dependencies": {
+    "parcel": "^2.12.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
-  }
+  },
+  "browserslist": [
+    "last 2 versions"
+  ]
 }
