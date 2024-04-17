@@ -26,7 +26,7 @@ const RestaurantCard = (props) => {
              <p className="res-delivery-time">{resData.info.sla.slaString}</p>
            </div>
            <p className="res-cost">{costForTwo}</p>
-           <p className="res-cuisine">{cuisines}</p>
+           <p className="res-cuisine">{cuisines.join(", ")}</p>
            <p className="res-location">{locality}</p>
          </div>
        </div>
