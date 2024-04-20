@@ -1,5 +1,5 @@
 import { HEADER_LOGO, CART_LOGO } from "../Utils/constants";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Header = () => {
   const [loginState, setLoginState] = useState("Login");
@@ -7,6 +7,18 @@ const Header = () => {
   const login = () => {
     loginState === "Login" ? setLoginState("Logout") : setLoginState("Login");
   };
+
+  // here useEffect calls whenever the dependency array variable changes i.e,loginState
+  useEffect(
+    // effect function
+    () => {
+    // debugger;
+    console.log('login state',loginState );
+      // cleanup function , which gets called when a component unmounts
+    return () => {
+      console.log('')
+    }
+  },[loginState])
 
   return (
     <div className="header-wrapper">

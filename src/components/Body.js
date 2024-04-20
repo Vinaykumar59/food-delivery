@@ -14,18 +14,38 @@ const Body = () => {
 
   // do enable CORS in browser while calling this api to avoid CORS
   const fetchData = async () => {
+    console.log("functiondata called");
+    // cors proxies
     // https://corsproxy.io/?
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.908136&lng=77.647606&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
-    const json = await data.json();
-    console.log("json", json);
-    setRestaurantData(
-      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-    setFilteredRestaurants(
-      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
+    // https://proxy.cors.sh/
+    // https://gobetween.oklabs.org/
+    // https://corsproxy.org/
+    //         "https://thingproxy.freeboard.io/fetch/" +
+    // encodeURIComponent(
+    //   "https://corsproxy.org/https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.908136&lng=77.647606&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+    // )
+
+    try {
+      const data = await fetch(
+        "https://thingproxy.freeboard.io/fetch/" +
+          encodeURIComponent(
+            "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.908136&lng=77.647606&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+          )
+      );
+
+      const json = await data.json();
+      console.log("json", json);
+      setRestaurantData(
+        json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants
+      );
+      setFilteredRestaurants(
+        json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants
+      );
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const searchRestaurants = () => {
@@ -63,7 +83,6 @@ const Body = () => {
           placeholder="Search"
           value={search}
           onChange={(e) => {
-            const originalData = restaurantData;
             setSearch(e.target.value);
           }}
         />
