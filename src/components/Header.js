@@ -1,5 +1,6 @@
 import { HEADER_LOGO, CART_LOGO } from "../Utils/constants";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [loginState, setLoginState] = useState("Login");
@@ -9,6 +10,7 @@ const Header = () => {
   };
 
   // here useEffect calls whenever the dependency array variable changes i.e,loginState
+  //if dependency array is empty or not present , useEffect calls after every render only once
   useEffect(
     // effect function
     () => {
@@ -25,9 +27,9 @@ const Header = () => {
       <img src={HEADER_LOGO} alt="app-logo" className="logo"></img>
       <div className="nav-items">
         <ul>
-          <li>Home</li>
-          <li>About Us</li>
-          <li>Contact Us</li>
+          <li><Link to={"/"}>Home</Link></li>
+          <li><Link to={"about-us"}>About Us</Link></li>
+          <li><Link to={"/contact-us"}>Contact Us</Link></li>
           <li>
             <img src={CART_LOGO} className="cart" />
           </li>

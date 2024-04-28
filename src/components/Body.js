@@ -1,6 +1,7 @@
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const [restaurantData, setRestaurantData] = useState([]);
@@ -14,7 +15,6 @@ const Body = () => {
 
   // do enable CORS in browser while calling this api to avoid CORS
   const fetchData = async () => {
-    console.log("functiondata called");
     // cors proxies
     // https://corsproxy.io/?
     // https://proxy.cors.sh/
@@ -34,7 +34,6 @@ const Body = () => {
       );
 
       const json = await data.json();
-      console.log("json", json);
       setRestaurantData(
         json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants
@@ -98,7 +97,9 @@ const Body = () => {
       </div>
       <div className="card-wrapper">
         {filteredRestaurants?.map((restaurant) => (
-          <RestaurantCard resData={restaurant} key={restaurant.info.id} />
+          <Link  key={restaurant.info.id} to={"/restaurant-menu/" +restaurant.info.id} >
+            <RestaurantCard resData={restaurant} />
+          </Link>
         ))}
       </div>
     </div>
