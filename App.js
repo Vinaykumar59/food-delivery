@@ -1,13 +1,15 @@
-import React from "react";
+import React, {lazy, Suspense} from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./src/components/Header"
 import Body from "./src/components/Body"
-import AboutUs from './src/components/AboutUs'
+// import AboutUs from './src/components/AboutUs'
 import ContactUs from "./src/components/ContactUs"
 import RestaurantMenu from "./src/components/RestaurantMenu";
 import ErrorElement from "./src/components/ErrorElement"
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 
+// here about us component is lazy loaded
+const AboutUs = lazy(() => import("./src/components/AboutUs"));
 const AppLayout = () => {
   // The below line returns an object of Header , which is the V-DOM of the component  
   console.log('<Header />', <Header />);
@@ -32,7 +34,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/about-us",
-        element: <AboutUs />
+        element: (<Suspense fallback={<><h1>Loading.....</h1></>}><AboutUs /></Suspense>)
       },
       {
         path: "/contact-us",

@@ -1,34 +1,11 @@
-import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
-import { CDN_URL, STAR_LOGO, RES_MENU_URL } from "../Utils/constants";
-
+import { CDN_URL, STAR_LOGO } from "../Utils/constants";
+import useRestaurantMenu from "../Utils/useRestaurantMenu";
+import useOnlineStatus from "../Utils/useOnlineStatus";
 const RestaurantMenu = () => {
-  const [resInfo, setResInfo] = useState(null);
   const { id } = useParams();
-  useEffect(() => {
-    fetchDataResMenu();
-  }, [id]);
-
-  const fetchDataResMenu = async () => {
-    console.log("fetch data called outside");
-    try {
-      const data = await fetch(
-        "https://thingproxy.freeboard.io/fetch/" +
-          encodeURIComponent(
-            RES_MENU_URL + id +  "&catalog_qa=undefined&isMenuUx4=true&submitAction=ENTER"
-          )
-      );
-
-      // const data = await fetch(
-      //   RES_MENU_URL + id +  "&catalog_qa=undefined&isMenuUx4=true&submitAction=ENTER"
-      // );
-      const json = await data.json();
-      setResInfo(json);
-    } catch (error) {
-      console.log("error", error);
-    }
-  };
+  const resInfo = useRestaurantMenu(id);
 
   const {
     avgRatingString,
@@ -44,6 +21,11 @@ const RestaurantMenu = () => {
   const resOffers =
     resInfo?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.offers ||
     {};
+
+  const online = useOnlineStatus();
+
+  if (!online) return <h1>!OOPS looks like you are offline. Please check your Internet connection </h1>;
+
   if (!resInfo) return <Shimmer />;
 
   return (

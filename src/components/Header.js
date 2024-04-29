@@ -1,6 +1,7 @@
 import { HEADER_LOGO, CART_LOGO } from "../Utils/constants";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../Utils/useOnlineStatus";
 
 const Header = () => {
   const [loginState, setLoginState] = useState("Login");
@@ -14,22 +15,32 @@ const Header = () => {
   useEffect(
     // effect function
     () => {
-    // debugger;
-    console.log('login state',loginState );
+      // debugger;
+      console.log("login state", loginState);
       // cleanup function , which gets called when a component unmounts
-    return () => {
-      console.log('')
-    }
-  },[loginState])
+      return () => {
+        console.log("");
+      };
+    },
+    [loginState]
+  );
+  const onlineStatus = useOnlineStatus();
 
   return (
     <div className="header-wrapper">
       <img src={HEADER_LOGO} alt="app-logo" className="logo"></img>
       <div className="nav-items">
         <ul>
-          <li><Link to={"/"}>Home</Link></li>
-          <li><Link to={"about-us"}>About Us</Link></li>
-          <li><Link to={"/contact-us"}>Contact Us</Link></li>
+          <li> online: {onlineStatus ? "🟢" : "🔴"}</li>
+          <li>
+            <Link to={"/"}>Home</Link>
+          </li>
+          <li>
+            <Link to={"about-us"}>About Us</Link>
+          </li>
+          <li>
+            <Link to={"/contact-us"}>Contact Us</Link>
+          </li>
           <li>
             <img src={CART_LOGO} className="cart" />
           </li>

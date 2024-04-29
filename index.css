@@ -304,3 +304,20 @@ a{
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
 }
+
+.about-us-page{
+  padding:16px;
+  margin:40px;
+  border: solid 1px #b1b1b1;
+  border-radius: 8px;
+}
+
+.avatar-logo{
+  width: 40px;
+  height: 40px;
+  display: block;
+  margin-top:20px;
+}
+li{
+  color: #ffffff;
+}
