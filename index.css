@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body,
 p {
   margin: 0;
@@ -65,7 +69,6 @@ p {
 
 .res-card-wrapper {
   flex-basis: 30%;
-  /* height:200px; */
   box-sizing: border-box;
   padding: 10px;
   display: flex;
@@ -186,7 +189,6 @@ p {
 }
 
 .shimmer-card {
-  /* width: 200px; */
   height: 500px;
   flex-basis: 30%;
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
@@ -253,7 +255,6 @@ a{
   display: flex;
   flex-direction: column;
   gap: 20px;
-  /* overflow-x: auto; */
   width:100%;
   padding: 20px;
 }

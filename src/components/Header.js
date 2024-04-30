@@ -27,22 +27,22 @@ const Header = () => {
   const onlineStatus = useOnlineStatus();
 
   return (
-    <div className="header-wrapper">
-      <img src={HEADER_LOGO} alt="app-logo" className="logo"></img>
-      <div className="nav-items">
-        <ul>
-          <li> online: {onlineStatus ? "🟢" : "🔴"}</li>
-          <li>
+    <div className="header-wrapper flex h-[88px] justify-between items-center bg-slate-400">
+      <img src={HEADER_LOGO} alt="app-logo" className="logo w-10 h-10"></img>
+      <div className="nav-items flex">
+        <ul className="flex items-center">
+          <li className="px-2"> online: {onlineStatus ? "🟢" : "🔴"}</li>
+          <li className="px-2">
             <Link to={"/"}>Home</Link>
           </li>
-          <li>
+          <li className="px-2">
             <Link to={"about-us"}>About Us</Link>
           </li>
-          <li>
+          <li className="px-2">
             <Link to={"/contact-us"}>Contact Us</Link>
           </li>
-          <li>
-            <img src={CART_LOGO} className="cart" />
+          <li className="px-2">
+            <img src={CART_LOGO} className="cart h-10 w-10" />
           </li>
         </ul>
         <button

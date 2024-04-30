@@ -79,6 +79,16 @@ sol: => We get this error because when we lazy load a component , it takes some 
         
         5)Potential for Flickering or Delay:=> If not implemented properly, code splitting can lead to flickering or delays in rendering as components or modules are loaded asynchronously. Careful management of loading states and user experience is necessary to mitigate these issues.
 
+9] What are the ways to style the components? 
+sol: => 1)normal css
+        2)sass/scss
+        3)material-ui
+        4)bootstrap
+        5)chakra-ui
+        6)styled components
+        7)tailwind css
+        6)Ant design
+
 
 
  -->
