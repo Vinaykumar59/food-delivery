@@ -91,4 +91,13 @@ sol: => 1)normal css
 
 
 
+<!-- Redux Toolkit -->
+
+#redux toolkit
+    - Install @reduxjs/toolkit and react-redux
+    -Build our store
+    -connect our store to our app
+    -slice (cartSclice)
+    -dispatch(action)
+    -Selector
  -->

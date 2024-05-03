@@ -1,11 +1,15 @@
+import { useState } from "react";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 import { CDN_URL, STAR_LOGO } from "../Utils/constants";
 import useRestaurantMenu from "../Utils/useRestaurantMenu";
 import useOnlineStatus from "../Utils/useOnlineStatus";
+import RestaurantMenuCategories from "./RestaurantMenuCategories";
 const RestaurantMenu = () => {
   const { id } = useParams();
   const resInfo = useRestaurantMenu(id);
+  // const [showItems, setShowItems] = useState(false);
+  const [showIndex, setShowIndex] = useState(null);
 
   const {
     avgRatingString,
@@ -22,9 +26,22 @@ const RestaurantMenu = () => {
     resInfo?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.offers ||
     {};
 
+  const categorydata =
+    resInfo?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR.cards;
+  const categories = categorydata?.filter(
+    (cardele) =>
+      cardele.card.card["@type"] ===
+      "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+  );
+
   const online = useOnlineStatus();
 
-  if (!online) return <h1>!OOPS looks like you are offline. Please check your Internet connection </h1>;
+  if (!online)
+    return (
+      <h1>
+        !OOPS looks like you are offline. Please check your Internet connection{" "}
+      </h1>
+    );
 
   if (!resInfo) return <Shimmer />;
 
@@ -59,6 +76,16 @@ const RestaurantMenu = () => {
               <p className="offer-coupon">coupon : {offer.info.couponCode}</p>
               <p className="offer-criteria">{offer.info.description}</p>
             </div>
+          ))}
+        </div>
+        <div className="res-categories-wrapper">
+          {categories.map((category, index) => (
+            <RestaurantMenuCategories
+              data={category}
+              showItems={index === showIndex ? true : false}
+              setShowIndex={() => setShowIndex(index)}
+              closeItems={() =>setShowIndex(null)}
+            />
           ))}
         </div>
       </div>

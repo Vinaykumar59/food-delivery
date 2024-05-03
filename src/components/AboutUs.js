@@ -1,9 +1,7 @@
-// import { render } from "react-dom";
 import User from "./User";
 import UserClass from "./UserClass";
 import React from "react";
-import { GIT_URL } from "../Utils/constants"
-import { render } from "react-dom";
+import { user } from "../Utils/userContext";
 
 class AboutUs extends React.Component {
   constructor(props) {
@@ -15,13 +13,17 @@ class AboutUs extends React.Component {
     console.log("parent mounted");
   }
 
+//   in class based components since we cannot use hooks , react provides us <context.consumer> component 
+//  which has a callback function within which we can access data
   render() {
     console.log("parent render");
     return (
       <div className="about-us">
         <h5>This is About Us Page</h5>
         {/* <User name="Vinay Kumar" /> */}
-
+        <user.Consumer>
+            {(data) => <h1>User: {data.loggedInUser}</h1>}
+        </user.Consumer>
         <UserClass name="child 1 :Vinay Kumar Class" location="Bangalore" />
         <UserClass name="child 2: Vinay Kumar Class" location="Bangalore" />
 

@@ -1,13 +1,19 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { OpenedRestaurant } from "./RestaurantCard";
 import Shimmer from "./Shimmer";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
+import {user} from "../Utils/userContext"
 
 const Body = () => {
   const [restaurantData, setRestaurantData] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [buttonState, setButtonState] = useState(false);
   const [search, setSearch] = useState("");
+
+  const { setUserName, loggedInUser } = useContext(user);
+
+  // higher order component
+  const RestaurantOpened = OpenedRestaurant(RestaurantCard);
 
   useEffect(() => {
     fetchData();
@@ -94,11 +100,18 @@ const Body = () => {
         >
           Filter Top rated restaurants
         </button>
+        <label>User:</label>
+        <input className="border-black p-1 border" value={loggedInUser} onChange={(e) => {
+          setUserName(e.target.value)
+        }}/>
       </div>
       <div className="card-wrapper">
         {filteredRestaurants?.map((restaurant) => (
-          <Link  key={restaurant.info.id} to={"/restaurant-menu/" +restaurant.info.id} >
-            <RestaurantCard resData={restaurant} />
+          <Link
+            key={restaurant.info.id}
+            to={"/restaurant-menu/" + restaurant.info.id}
+          >
+            {restaurant?.info.isOpen ? <RestaurantOpened  resData={restaurant}/> : <RestaurantCard resData={restaurant} />}
           </Link>
         ))}
       </div>
