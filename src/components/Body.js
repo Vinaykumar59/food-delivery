@@ -63,7 +63,7 @@ const Body = () => {
   const topRestaurants = () => {
     if (!buttonState) {
       const filteredResults = restaurantData.filter(
-        (restaurant) => restaurant.info.avgRating >= 4.5
+        (restaurant) => restaurant.info.avgRating >= 4.2
       );
       setFilteredRestaurants(filteredResults);
       setButtonState(!buttonState);
@@ -84,6 +84,7 @@ const Body = () => {
       <div className="search-filter-wrapper">
         <input
           type="search"
+          data-testid="searchInput"
           className="search"
           placeholder="Search"
           value={search}
@@ -97,6 +98,7 @@ const Body = () => {
         <button
           className={"filter-btn" + " " + (buttonState ? "selected" : "")}
           onClick={topRestaurants}
+          data-testid="top-restaurants"
         >
           Filter Top rated restaurants
         </button>

@@ -6,10 +6,11 @@ const cardStyle = {
 
 const RestaurantCard = (props) => {
   const { resData } = props;
+  // console.log("resData", resData);
   const { cloudinaryImageId, name, avgRating, costForTwo, cuisines, locality } =
     resData.info;
   return (
-    <div className="res-card-wrapper" style={cardStyle}>
+    <div className="res-card-wrapper" data-testid="res-card" style={cardStyle}>
       <img
         src={CDN_URL + cloudinaryImageId}
         className="res-logo"
@@ -35,7 +36,7 @@ export const OpenedRestaurant = (RestaurantCard) => {
   return (props) => {
     return (
       <div>
-        <label className="absolute m-1 p-1 bg-black text-white">Opened</label>
+        <label className="absolute m-1 p-1 bg-black text-white opened">Opened</label>
         <RestaurantCard  {...props}/>
       </div>
     );

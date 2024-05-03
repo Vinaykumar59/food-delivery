@@ -15,20 +15,20 @@ const Header = () => {
 
   // here we are reading data from state/ subscribing from the state
   const items = useSelector((store) => store.cart.items);
-  console.log('items', items);
+  // console.log('items', items);
 
   const userName = useContext(user);
-  console.log(userName);
+  // console.log(userName);
   // here useEffect calls whenever the dependency array variable changes i.e,loginState
   //if dependency array is empty or not present , useEffect calls after every render only once
   useEffect(
     // effect function
     () => {
       // debugger;
-      console.log("login state", loginState);
+      // console.log("login state", loginState);
       // cleanup function , which gets called when a component unmounts
       return () => {
-        console.log("");
+        // console.log("");
       };
     },
     [loginState]

@@ -101,3 +101,21 @@ sol: => 1)normal css
     -dispatch(action)
     -Selector
  -->
+
+# Types of testing(developer testing)
+ - unit testing
+ - Integraation testing
+ - End to end testing -e2e testing
+
+# setting up Testing in our app
+    - install React testing Library
+    - Intall Jest
+    - Installed Babel dependencies 
+    - Configure babel (babel.config.js)
+    - configure parcel config file to disable default babel transpilation
+    - jest configuration
+    -JEST - npx jest --init
+    -Install jsdom library
+    - Install @babel/preset-react -to make JSX work in test cases
+    - Include @babel/preset-react inside my babel config file
+    - Install @testing-library/jest-dom

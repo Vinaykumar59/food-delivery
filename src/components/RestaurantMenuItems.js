@@ -21,7 +21,7 @@ const RestaurantMenuItems = ({ itemcard }) => {
   }
 
   return (
-    <div>
+    <div data-testid="cart-items">
       <div
         className="m-2 p-2 border-b-2 flex justify-between"
         key={itemcard.card?.info?.id}
