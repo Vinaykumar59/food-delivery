@@ -45,3 +45,7 @@ it("should cover the entire flow from restaurant menu to cart", async () => {
   console.log(cartItems.length);
   expect(cartItems.length).toBe(21)
 });
+
+it("should remove cart item when clicked on remove", () => {
+    
+})

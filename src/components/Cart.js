@@ -33,7 +33,7 @@ const Cart = () => {
       )}
       <div className="w-9/12">
         {items.map((item) => (
-          <RestaurantMenuItems itemcard={item} />
+          <RestaurantMenuItems itemcard={item} key={item.id}/>
         ))}
       </div>
     </div>
